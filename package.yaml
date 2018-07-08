@@ -1,0 +1,76 @@
+name:                rewrite-simplifier
+version:             0.1.0.0
+github:              "mints97/rewrite-simplifier"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "example@example.com"
+copyright:           "2018 Author name here"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+default-extensions:
+- LambdaCase
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/mints97/rewrite-simplifier#readme>
+
+dependencies:
+- prettyprinter
+- base >= 4.7 && < 5
+- bytestring
+
+library:
+  source-dirs: src
+  default-extensions:
+  - MultiWayIf
+  - DeriveDataTypeable
+  - DeriveFunctor
+  - DeriveFoldable
+  - DeriveTraversable
+  - GeneralizedNewtypeDeriving
+  - RankNTypes
+  - FlexibleContexts
+  - FlexibleInstances
+  - NoMonomorphismRestriction 
+
+  ghc-options: -Wall
+
+  exposed-modules:
+  - Formula
+  - Formula.Parser
+  - Formula.Simplifier
+
+  dependencies:
+  - base >=4.8
+  - containers >=0.5
+  - lens >=4.15
+  - mtl >=2.2
+  - parsec >=3.1
+  - template-haskell >=2.11
+  - syb
+
+executables:
+  rewrite-simplifier-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -O2
+    dependencies:
+    - rewrite-simplifier
+
+tests:
+  rewrite-simplifier-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -O2
+    dependencies:
+    - rewrite-simplifier

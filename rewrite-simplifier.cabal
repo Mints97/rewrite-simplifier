@@ -1,0 +1,83 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 29b1c728b44fa79e1e9180f2103d1265deb90cd0192916212a8759d75f4d42fd
+
+name:           rewrite-simplifier
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/mints97/rewrite-simplifier#readme>
+homepage:       https://github.com/mints97/rewrite-simplifier#readme
+bug-reports:    https://github.com/mints97/rewrite-simplifier/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2018 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/mints97/rewrite-simplifier
+
+library
+  hs-source-dirs:
+      src
+  default-extensions: LambdaCase MultiWayIf DeriveDataTypeable DeriveFunctor DeriveFoldable DeriveTraversable GeneralizedNewtypeDeriving RankNTypes FlexibleContexts FlexibleInstances NoMonomorphismRestriction
+  ghc-options: -Wall
+  build-depends:
+      base >=4.8
+    , bytestring
+    , containers >=0.5
+    , lens >=4.15
+    , mtl >=2.2
+    , parsec >=3.1
+    , prettyprinter
+    , syb
+    , template-haskell >=2.11
+  exposed-modules:
+      Formula
+      Formula.Parser
+      Formula.Simplifier
+  other-modules:
+      Formula.Expr
+      Formula.Type
+      Formula.Var
+      Paths_rewrite_simplifier
+  default-language: Haskell2010
+
+executable rewrite-simplifier-exe
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  default-extensions: LambdaCase
+  ghc-options: -O2
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , prettyprinter
+    , rewrite-simplifier
+  other-modules:
+      Paths_rewrite_simplifier
+  default-language: Haskell2010
+
+test-suite rewrite-simplifier-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  default-extensions: LambdaCase
+  ghc-options: -O2
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , prettyprinter
+    , rewrite-simplifier
+  other-modules:
+      Paths_rewrite_simplifier
+  default-language: Haskell2010
